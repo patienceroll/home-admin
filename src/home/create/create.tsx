@@ -1,14 +1,24 @@
 import React from "react";
-import { ResourceProps, Create, ImageInput, Resource } from "react-admin";
+import {
+  ResourceProps,
+  Create,
+  ImageInput,
+  TextInput,
+  SimpleForm,
+  ImageField,
+} from "react-admin";
 
 const CreateHomeItem: ResourceProps["create"] = (props) => {
   return (
     <Create {...props} title="新建首页项目">
-      <Resource name="新建首页项目">
-          <ImageInput source="http://gsea.top" >
-              13123
-          </ImageInput>
-      </Resource>
+      <SimpleForm submitOnEnter>
+        <TextInput source="title" required label="标题" />
+        <TextInput source="subTitle" label="子标题" />
+        <TextInput source="url" required label="地址" />
+        <ImageInput source="image" required label="封面">
+          <ImageField source="image" />
+        </ImageInput>
+      </SimpleForm>
     </Create>
   );
 };
