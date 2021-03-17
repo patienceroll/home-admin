@@ -1,5 +1,5 @@
 import { DataProvider } from "react-admin";
-import HomeApi from "../home/list/service";
+import HomeApi from "../home/service";
 
 const getList: DataProvider["getList"] = (Resource, params) => {
   switch (Resource) {

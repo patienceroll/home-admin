@@ -41,5 +41,5 @@
   "devDependencies": {
     "typescript": "^4.2.3"
   },
-  "proxy": "http://gsea.top:3000"
+  "proxy": "http://admin.gsea.top"
 }
