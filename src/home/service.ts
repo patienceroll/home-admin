@@ -10,7 +10,7 @@ const GetHomeList = (param = {}) =>
 
 /** 新建首页数据 */
 const PostHomeItem = (params: Data.CreateHomeParamType) =>
-  post<null>("home", params);
+  post<null>(buildUrl("home"), params);
 
 const Request = {
   GetHomeList,
