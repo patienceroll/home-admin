@@ -4,17 +4,21 @@ import commomApi from "../fetch/common/common";
 import HomeApi from "../home/service";
 
 const create: DataProvider["create"] = async (resourse, params) => {
+  const { data } = params;
+
   switch (resourse) {
     case "home":
-      const { data } = params;
       const formData = new FormData();
       formData.append("file", data.image.rawFile);
       const img = await commomApi.UploadImage(formData);
-      await HomeApi.PostHomeItem({
+      const RsData = await HomeApi.PostHomeItem({
         ...data,
         image: img.data,
       });
-      return { data, validUntil: new Date() };
+      return {
+        data:RsData.data,
+        validUntil: new Date(),
+      };
     default:
       return Promise.reject("未找到请求的接口");
   }
