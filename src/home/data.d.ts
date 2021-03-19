@@ -1,9 +1,12 @@
-export type HomeListItem = {
+import { Record } from "ra-core";
+
+/** 首页展示项 */
+export interface HomeListItem extends Record {
   title: string;
   subTitle: string | undefined;
   url: string | undefined;
   image: string;
-} & { _id: string };
+}
 
 export type CreateHomeParamType = {
   title: string;

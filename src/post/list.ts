@@ -1,21 +1,18 @@
 import { DataProvider } from "react-admin";
+
 import HomeApi from "../home/service";
 
-const getList: DataProvider["getList"] = (Resource, params) => {
+/** 获取table列表 */
+const getList: DataProvider["getList"] = async (Resource, params) => {
+  console.log(params);
+  const { filter, sort, pagination } = params;
   switch (Resource) {
     case "home":
-      return HomeApi.GetHomeList({}).then((res) => {
-        return {
-          data: res.data.map(({ title, subTitle, _id, url, image }) => ({
-            title,
-            subTitle,
-            url,
-            image,
-            id: _id,
-          })),
-          total: 64,
-        } as any;
-      });
+      const res = await HomeApi.GetHomeList({});
+      return {
+        data: res.data as any,
+        total: 64,
+      };
 
     default:
       throw new Error("请求列表路径错误");
