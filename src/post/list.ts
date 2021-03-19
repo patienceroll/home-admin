@@ -8,10 +8,14 @@ const getList: DataProvider["getList"] = async (Resource, params) => {
   const { filter, sort, pagination } = params;
   switch (Resource) {
     case "home":
-      const res = await HomeApi.GetHomeList({});
+      const {
+        data: { list, total },
+      } = await HomeApi.GetHomeList({
+        ...pagination,
+      });
       return {
-        data: res.data as any,
-        total: 64,
+        data: list as any,
+        total: total,
       };
 
     default:

@@ -6,6 +6,14 @@ declare namespace FetchType {
     msg: string;
   };
 
+  /** 列表返回数据 */
+  type ListType<T> = {
+    list: T[];
+    total: number;
+    page: number;
+    perPage: number;
+  };
+
   /** get请求 */
   type Get = <T = any>(
     path: string,

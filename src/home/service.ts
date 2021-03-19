@@ -1,4 +1,5 @@
 import Fetch from "../fetch/fetch";
+import FetchType from "../fetch/data";
 
 import Data from "./data";
 
@@ -6,7 +7,7 @@ const { get, post, buildUrl } = Fetch;
 
 /** 获取首页项目数据 */
 const GetHomeList = (param = {}) =>
-  get<Data.HomeListItem[]>(buildUrl("home"), param);
+  get<FetchType.ListType<Data.HomeListItem>>(buildUrl("home"), param);
 
 /** 新建首页数据 */
 const PostHomeItem = (params: Data.CreateHomeParamType) =>
