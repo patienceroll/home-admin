@@ -13,10 +13,10 @@ const create: DataProvider["create"] = async (resourse, params) => {
       const img = await commomApi.UploadImage(formData);
       const RsData = await HomeApi.PostHomeItem({
         ...data,
-        image: img.data,
+        image: img.data.filePath,
       });
       return {
-        data:RsData.data,
+        data: RsData.data,
         validUntil: new Date(),
       };
     default:
