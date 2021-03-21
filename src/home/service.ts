@@ -20,9 +20,7 @@ const GetHomeItem = (id: string | number) =>
 /** 编辑首页的某一项 */
 const PutHomeItem = (
   params: Data.CreateHomeParamType & { id: number | string }
-) => {
-  put<any>(buildUrl(`home/${params.id}`), { ...params, id: undefined });
-};
+) => put<any>(buildUrl(`home/${params.id}`), { ...params, id: undefined });
 
 const Request = {
   GetHomeList,

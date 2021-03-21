@@ -10,11 +10,11 @@ const update: DataProvider["update"] = async (resourse, params) => {
       const formData = new FormData();
       formData.append("file", data.image.rawFile);
       const shortUrl = await commomApi.UploadImage(formData);
-      await HomeApi.PutHomeItem({
+      const res = await HomeApi.PutHomeItem({
         ...data,
         image: (shortUrl as unknown) as string,
       });
-      return {} as any;
+      return { data: res.data };
     default:
       return Promise.reject("未找到请求的接口");
   }
