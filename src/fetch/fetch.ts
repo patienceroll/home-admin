@@ -45,6 +45,27 @@ const post: FetchType.Post = (path, params = {}) => {
     });
 };
 
+const put: FetchType.Put = (path, params = {}) => {
+  params._timeStamp = +new Date();
+  return fetch(path, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(params),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((res: FetchType.BaseResponse<any>) => {
+      if (res.code === 0) {
+        return res;
+      } else {
+        return Promise.reject();
+      }
+    });
+};
+
 const postFormdata: FetchType.PostFormdata = (path, data) => {
   return fetch(path, {
     method: "POST",
@@ -75,6 +96,8 @@ const Fetch = {
   /** formData发送 */
   postFormdata,
   buildUrl,
+  /** put请求方法 */
+  put,
 };
 
 export default Fetch;

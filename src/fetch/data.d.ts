@@ -26,6 +26,12 @@ declare namespace FetchType {
     params?: Record<string, any>
   ) => Promise<BaseResponse<T>>;
 
+  /** put请求 */
+  type Put = <T = any>(
+    path: string,
+    params?: Record<string, any>
+  ) => Promise<BaseResponse<T>>;
+
   /** postFormData请求 */
   type PostFormdata = <T = any>(
     path: string,
