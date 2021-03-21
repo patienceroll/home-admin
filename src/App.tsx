@@ -32,7 +32,7 @@ const App = () => {
         <Resource
           name="home"
           list={Home.List}
-          // edit={PostEdit}
+          edit={Home.Edit}
           create={Home.Create}
           // icon={PostIcon}
         />

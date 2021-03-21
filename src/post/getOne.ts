@@ -1,10 +1,15 @@
 import { DataProvider } from "react-admin";
+import HomeApi from "../home/service";
 
 const getOne: DataProvider["getOne"] = (resourse, params) => {
-  console.log(resourse, params);
-  return new Promise(() => {
-    return {};
-  });
+  switch (resourse) {
+    case "home":
+      return HomeApi.GetHomeItem(params.id).then((res) => {
+        return { data: res.data as any };
+      });
+    default:
+      throw new Error("未找到获取详情请求");
+  }
 };
 
 export default getOne;
