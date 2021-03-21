@@ -14,7 +14,6 @@ const getOne: DataProvider["getOne"] = (resourse, params) => {
           url,
           image: await newFile(image),
         };
-        console.log(data);
         return { data } as any;
       });
     default:
