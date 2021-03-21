@@ -1,11 +1,21 @@
 import { DataProvider } from "react-admin";
 import HomeApi from "../home/service";
+import newFile from "../helper/new-file/new-file";
 
 const getOne: DataProvider["getOne"] = (resourse, params) => {
   switch (resourse) {
     case "home":
-      return HomeApi.GetHomeItem(params.id).then((res) => {
-        return { data: res.data as any };
+      return HomeApi.GetHomeItem(params.id).then(async (res) => {
+        const { id, image, title, subTitle, url } = res.data;
+        const data = {
+          id,
+          title,
+          subTitle,
+          url,
+          image: await newFile(image),
+        };
+        console.log(data);
+        return { data } as any;
       });
     default:
       throw new Error("未找到获取详情请求");

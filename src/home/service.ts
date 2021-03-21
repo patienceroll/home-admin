@@ -14,7 +14,7 @@ const PostHomeItem = (params: Data.CreateHomeParamType) =>
   post<any>(buildUrl("home"), params);
 
 /** 获取首页某一项 */
-const GetHomeItem = (id: string | number) => get<Data.HomeListItem>(`home/${id}`);
+const GetHomeItem = (id: string | number) => get<Data.HomeListItem>(buildUrl(`home/${id}`));
 
 const Request = {
   GetHomeList,
