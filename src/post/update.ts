@@ -9,7 +9,12 @@ const update: DataProvider["update"] = async (resourse, params) => {
     case "home":
       const { data, id } = params;
       const formData = new FormData();
-      formData.append("file", data.image);
+      // 如果更换过图片,数据格式如此
+      if (data.image.rawFile) {
+        formData.append("file", data.image.rawFile);
+      } else {
+        formData.append("file", data.image);
+      }
       const {
         data: { filePath },
       } = await commomApi.UploadImage(formData);
