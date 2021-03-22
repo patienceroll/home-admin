@@ -4,15 +4,16 @@ import commomApi from "../fetch/common/common";
 import HomeApi from "../home/service";
 
 const update: DataProvider["update"] = async (resourse, params) => {
+  console.log("update", params);
   switch (resourse) {
     case "home":
-      const { data } = params;
+      const { data, id } = params;
       const formData = new FormData();
-      console.log(data);
       formData.append("file", data.image);
       const shortUrl = await commomApi.UploadImage(formData);
       const res = await HomeApi.PutHomeItem({
         ...data,
+        id,
         image: (shortUrl as unknown) as string,
       });
       return { data: res.data };
