@@ -8,7 +8,8 @@ const update: DataProvider["update"] = async (resourse, params) => {
     case "home":
       const { data } = params;
       const formData = new FormData();
-      formData.append("file", data.image.rawFile);
+      console.log(data);
+      formData.append("file", data.image);
       const shortUrl = await commomApi.UploadImage(formData);
       const res = await HomeApi.PutHomeItem({
         ...data,
