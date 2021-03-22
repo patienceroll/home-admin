@@ -10,11 +10,13 @@ const update: DataProvider["update"] = async (resourse, params) => {
       const { data, id } = params;
       const formData = new FormData();
       formData.append("file", data.image);
-      const shortUrl = await commomApi.UploadImage(formData);
+      const {
+        data: { filePath },
+      } = await commomApi.UploadImage(formData);
       const res = await HomeApi.PutHomeItem({
         ...data,
         id,
-        image: (shortUrl as unknown) as string,
+        image: (filePath as unknown) as string,
       });
       return { data: res.data };
     default:
