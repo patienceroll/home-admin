@@ -9,8 +9,9 @@ import {
 } from "react-admin";
 
 const CreateHomeItem: ResourceProps["create"] = (props) => {
+  const { history } = props as any;
   return (
-    <Create {...props} title="新建首页项目">
+    <Create {...props} title="新建首页项目" onSuccess={() => history.go(-1)}>
       <SimpleForm submitOnEnter>
         <TextInput source="title" required label="标题" />
         <TextInput source="subTitle" label="子标题" />
