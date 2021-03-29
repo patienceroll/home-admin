@@ -20,3 +20,6 @@ type PhotoDetail = PhotoListItem & {
 
 /** 相册列表分页参数 */
 type PhotoListParams = BaseListParams & {};
+
+/** 新建相册参数 */
+type PhotoCreateParams = Omit<PhotoListItem, "id"> & { content: string };

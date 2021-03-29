@@ -1,21 +1,28 @@
 import { DataProvider } from "react-admin";
 
 import HomeApi from "../page/home/service";
+import * as PhotoApi from "../page/photo/service";
 
 /** 获取table列表 */
 const getList: DataProvider["getList"] = async (Resource, params) => {
-  console.log(params);
   const { filter, sort, pagination } = params;
   switch (Resource) {
     case "home":
-      const {
-        data: { list, total },
-      } = await HomeApi.GetHomeList({
+      const HomeRes = await HomeApi.GetHomeList({
         ...pagination,
       });
       return {
-        data: list as any,
-        total: total,
+        data: HomeRes.data.list as any,
+        total: HomeRes.data.total,
+      };
+
+    case "photo":
+      const PhotoRes = await PhotoApi.GetPhotoList({
+        ...pagination,
+      });
+      return {
+        data: PhotoRes.data.list as any,
+        total: PhotoRes.data.total,
       };
 
     default:

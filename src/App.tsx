@@ -12,6 +12,7 @@ import Delete from "./post/delete";
 import deleteMany from "./post/deleteMany";
 
 import Home from "./page/home/index";
+import Photo from "./page/photo/index";
 
 const App = () => {
   const dataProvider: DataProvider = {
@@ -34,6 +35,13 @@ const App = () => {
           list={Home.List}
           edit={Home.Edit}
           create={Home.Create}
+          // icon={PostIcon}
+        />
+        <Resource
+          name="photo"
+          list={Photo.List}
+          edit={Photo.Edit}
+          create={Photo.Create}
           // icon={PostIcon}
         />
       </Admin>
