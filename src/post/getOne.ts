@@ -1,5 +1,5 @@
 import { DataProvider } from "react-admin";
-import HomeApi from "../home/service";
+import HomeApi from "../page/home/service";
 import newFile from "../helper/new-file/new-file";
 
 const getOne: DataProvider["getOne"] = (resourse, params) => {

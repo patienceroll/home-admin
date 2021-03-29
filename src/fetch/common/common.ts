@@ -1,11 +1,11 @@
-import Fetch from "../fetch";
+import { PostFormdata, buildUrl } from "../fetch";
 
 /** 上传图片 */
 const UploadImage = (data: FormData) => {
-  return Fetch.postFormdata<{
+  return PostFormdata<{
     fileName: string | string[];
     filePath: string | string[];
-  }>(Fetch.buildUrl("upload/image"), data);
+  }>(buildUrl("upload/image"), data);
 };
 
 const commomApi = {

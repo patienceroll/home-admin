@@ -1,6 +1,6 @@
 import { DataProvider } from "react-admin";
 
-import HomeApi from "../home/service";
+import HomeApi from "../page/home/service";
 
 /** 获取table列表 */
 const getList: DataProvider["getList"] = async (Resource, params) => {

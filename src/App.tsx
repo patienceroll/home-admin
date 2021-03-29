@@ -11,7 +11,7 @@ import updateMany from "./post/updateMany";
 import Delete from "./post/delete";
 import deleteMany from "./post/deleteMany";
 
-import Home from "./home/index";
+import Home from "./page/home/index";
 
 const App = () => {
   const dataProvider: DataProvider = {

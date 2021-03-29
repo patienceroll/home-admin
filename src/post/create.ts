@@ -1,7 +1,7 @@
 import { DataProvider } from "react-admin";
 import commomApi from "../fetch/common/common";
 
-import HomeApi from "../home/service";
+import HomeApi from "../page/home/service";
 
 const create: DataProvider["create"] = async (resourse, params) => {
   const { data } = params;
