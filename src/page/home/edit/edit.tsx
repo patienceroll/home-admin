@@ -12,9 +12,9 @@ const EditHomeItem: ResourceProps["edit"] = (props) => {
   return (
     <Edit {...props} title="编辑">
       <SimpleForm>
-        <TextInput source="title" required label="标题" />
-        <TextInput source="subTitle" label="子标题" />
-        <TextInput source="url" required label="地址" />
+        <TextInput variant="outlined" source="title" required label="标题" />
+        <TextInput variant="outlined" source="subTitle" label="子标题" />
+        <TextInput variant="outlined" source="url" required label="地址" />
         <ImageInput
           source="image"
           required
