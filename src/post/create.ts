@@ -19,6 +19,10 @@ const create: DataProvider["create"] = async (resourse, params) => {
         data: RsData.data,
         validUntil: new Date(),
       };
+    case "photo":
+      console.log(params);
+
+      return Promise.reject("test");
     default:
       return Promise.reject("未找到请求的接口");
   }
