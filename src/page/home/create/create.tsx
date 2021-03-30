@@ -16,7 +16,15 @@ const CreateHomeItem: ResourceProps["create"] = (props) => {
         <TextInput source="title" required label="标题" />
         <TextInput source="subTitle" label="子标题" />
         <TextInput source="url" required label="地址" />
-        <ImageInput source="image" required label="封面">
+        <ImageInput
+          source="image"
+          accept=".jpg,.png,.gif"
+          required
+          label="封面"
+          placeholder={
+            <h3 style={{ height: 50, lineHeight: "50px" }}>请上传封面</h3>
+          }
+        >
           <ImageField source="image" />
         </ImageInput>
       </SimpleForm>
