@@ -5,7 +5,6 @@ import HomeApi from "../page/home/service";
 
 const create: DataProvider["create"] = async (resourse, params) => {
   const { data } = params;
-
   switch (resourse) {
     case "home":
       const formData = new FormData();

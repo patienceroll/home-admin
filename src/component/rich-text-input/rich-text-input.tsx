@@ -8,13 +8,15 @@ import React, {
   useState,
 } from "react";
 import RichTextInput from "ra-input-rich-text";
-import type { InputProps } from "react-admin";
-import { ImageInput, ImageField } from "react-admin";
+import { InputProps } from "react-admin";
 import Quill from "quill";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogAction from "@material-ui/core/DialogActions";
+import Button from "@material-ui/core/Button";
+
+import UploadFile from "../upload-file/upload-file";
 
 import "./rich-text-input.scss";
 
@@ -86,15 +88,16 @@ const RichInput = memo(
         >
           <DialogTitle>添加图片</DialogTitle>
           <DialogContent>
-            <ImageInput
-              source="img"
-              label={false}
-              placeholder={<p>请上传封面</p>}
-              multiple
-            >
-              <ImageField />
-            </ImageInput>
+            <UploadFile />
           </DialogContent>
+          <DialogAction>
+            <Button autoFocus color="primary">
+              取消
+            </Button>
+            <Button color="primary" autoFocus>
+              确定
+            </Button>
+          </DialogAction>
         </Dialog>
       </>
     );

@@ -1,0 +1,22 @@
+.ct_inner {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  min-height: 50px;
+  background-color: #efefef;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ct {
+}
+
+.img_wrapper {
+  height: 150px;
+  display: inline-block;
+  padding: 5px;
+  img {
+    height: 100%;
+  }
+}
