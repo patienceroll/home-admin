@@ -7,10 +7,13 @@ import React, {
   useState,
 } from "react";
 import type { CSSProperties } from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Backdrop from "@material-ui/core/Backdrop";
 
-import X from "../../assets/svg/x.svg";
+import { ReactComponent as X } from "../../assets/svg/x.svg";
 
 import Style from "./upload-file.module.scss";
+import { UploadImage } from "../../fetch/common/common";
 
 type UploadFileProps = {
   className?: string;
@@ -24,7 +27,11 @@ type UploadFileProps = {
   >;
 };
 
-type UploadFileRefType = {};
+export type UploadFileRefType = {
+  getFileList: () => File[];
+  setFileList: React.Dispatch<React.SetStateAction<File[]>>;
+  triggerUpload: () => Promise<string[]>;
+};
 
 const UploadFile = memo(
   forwardRef<UploadFileRefType, UploadFileProps>((props, ref) => {
@@ -33,9 +40,14 @@ const UploadFile = memo(
     const input = useRef<HTMLInputElement>(null);
 
     const [fileList, setFileList] = useState<File[]>([]);
+    const [open, setOpen] = useState(false);
 
     const onClick = () => {
       if (input.current) input.current.click();
+    };
+
+    const onClickX = (indexX: number) => () => {
+      setFileList((list) => list.filter((_i, index) => index !== indexX));
     };
 
     const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,11 +55,32 @@ const UploadFile = memo(
         setFileList((f) => f.concat(Array.from(e.target.files as FileList)));
     };
 
-    useImperativeHandle(ref, () => ({}));
+    useImperativeHandle(ref, () => ({
+      getFileList() {
+        return fileList;
+      },
+      setFileList,
+      triggerUpload() {
+        if (fileList.length === 0) return Promise.resolve([]);
+        setOpen(true);
+        const formData = new FormData();
+        fileList.forEach((i) => formData.append("file", new Blob([i]), i.name));
 
-    useEffect(() => {
-      console.log(fileList);
-    }, [fileList]);
+        return UploadImage(formData)
+          .then((res) => {
+            const {
+              data: { filePath },
+            } = res;
+            if (Array.isArray(filePath)) {
+              return filePath;
+            }
+            return [filePath];
+          })
+          .finally(() => {
+            setOpen(false);
+          });
+      },
+    }));
 
     return (
       <div style={style} className={`${Style.ct} ${className}`}>
@@ -64,11 +97,17 @@ const UploadFile = memo(
             />
           </div>
         </div>
-        {fileList.map((i) => (
-          <div key={i.lastModified} className={Style.img_wrapper}>
-            <img src={URL.createObjectURL(i)} alt="" />
-          </div>
-        ))}
+        <div style={{ marginTop: 20 }}>
+          {fileList.map((i, index) => (
+            <div key={i.lastModified} className={Style.img_wrapper}>
+              <X className={Style.X} onClick={onClickX(index)} />
+              <img src={URL.createObjectURL(i)} alt="" />
+            </div>
+          ))}
+        </div>
+        <Backdrop open={open}>
+          <CircularProgress />
+        </Backdrop>
       </div>
     );
   })

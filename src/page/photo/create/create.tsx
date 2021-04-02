@@ -23,7 +23,6 @@ const CreatePhoto: ResourceProps["create"] = (props) => {
         <ImageInput
           className={Style.img_input}
           variant="outlined"
-          multiple
           source="cover"
           accept=".jpg,.png,.gif"
           required

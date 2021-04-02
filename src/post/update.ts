@@ -1,5 +1,5 @@
 import { DataProvider } from "react-admin";
-import commomApi from "../fetch/common/common";
+import {UploadImage} from "../fetch/common/common";
 
 import HomeApi from "../page/home/service";
 
@@ -17,7 +17,7 @@ const update: DataProvider["update"] = async (resourse, params) => {
       }
       const {
         data: { filePath },
-      } = await commomApi.UploadImage(formData);
+      } = await UploadImage(formData);
       const res = await HomeApi.PutHomeItem({
         ...data,
         id,

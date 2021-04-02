@@ -2,6 +2,7 @@ import React, {
   forwardRef,
   memo,
   useCallback,
+  useEffect,
   useImperativeHandle,
   useMemo,
   useRef,
@@ -16,7 +17,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogAction from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 
-import UploadFile from "../upload-file/upload-file";
+import UploadFile, { UploadFileRefType } from "../upload-file/upload-file";
 
 import "./rich-text-input.scss";
 
@@ -29,6 +30,7 @@ interface RichInputProps extends InputProps {}
 const RichInput = memo(
   forwardRef<RichInputRefType, RichInputProps>((props, ref) => {
     const quillInstance = useRef<Quill>();
+    const uploadFile = useRef<UploadFileRefType>(null);
 
     const [open, setOpen] = useState(false);
 
@@ -67,6 +69,30 @@ const RichInput = memo(
       setOpen(false);
     };
 
+    const onConfirm = () => {
+      if (uploadFile.current) {
+        uploadFile.current.triggerUpload().then((paths) => {
+          const { current } = quillInstance;
+          if (current) {
+            paths.forEach((path) => {
+              current.insertEmbed(
+                current.getSelection(true).index,
+                "image",
+                path
+              );
+            });
+            setOpen(false);
+          }
+        });
+      }
+    };
+
+    useEffect(() => {
+      if (open && uploadFile.current) {
+        uploadFile.current.setFileList([]);
+      }
+    }, [open]);
+
     useImperativeHandle(ref, () => ({
       getQuill() {
         if (quillInstance.current) return quillInstance.current;
@@ -88,13 +114,13 @@ const RichInput = memo(
         >
           <DialogTitle>添加图片</DialogTitle>
           <DialogContent>
-            <UploadFile />
+            <UploadFile ref={uploadFile} />
           </DialogContent>
           <DialogAction>
-            <Button autoFocus color="primary">
+            <Button onClick={onClose} autoFocus color="primary">
               取消
             </Button>
-            <Button color="primary" autoFocus>
+            <Button color="primary" onClick={onConfirm} autoFocus>
               确定
             </Button>
           </DialogAction>

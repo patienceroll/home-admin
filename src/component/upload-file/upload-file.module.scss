@@ -13,10 +13,22 @@
 }
 
 .img_wrapper {
-  height: 150px;
   display: inline-block;
-  padding: 5px;
+  position: relative;
+  padding: 10px;
+  height: 150px;
   img {
     height: 100%;
+  }
+  .X {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    path {
+      fill: #DD2B05  !important;
+    }
   }
 }
