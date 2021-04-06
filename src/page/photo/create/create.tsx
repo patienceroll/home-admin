@@ -15,7 +15,7 @@ import Style from "./create.module.scss";
 
 const CreatePhoto: ResourceProps["create"] = (props) => {
   return (
-    <Create {...props}>
+    <Create {...props} title="新建相册">
       <SimpleForm>
         <TextInput variant="outlined" source="title" required label="标题" />
         <DateInput variant="outlined" source="date" required label="日期" />

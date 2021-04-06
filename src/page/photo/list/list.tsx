@@ -4,7 +4,9 @@ import {
   ResourceProps,
   ImageField,
   TextField,
+  EditButton,
   Datagrid,
+  DeleteButton
 } from "react-admin";
 
 const RenderList: ResourceProps["list"] = (props) => {
@@ -12,9 +14,11 @@ const RenderList: ResourceProps["list"] = (props) => {
     <List {...props} title="相册">
       <Datagrid>
         <TextField source="title" label="标题" />
-        <TextField source="describe" label="标题" />
+        <TextField source="describe" label="描述" />
         <TextField source="date" label="日期" />
         <ImageField source="cover" label="封面" />
+        <EditButton />
+        <DeleteButton  />
       </Datagrid>
     </List>
   );

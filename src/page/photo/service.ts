@@ -1,5 +1,5 @@
-import { Get, Post, buildUrl } from "../../fetch/fetch";
-import type { BaseResponse, ListType } from "../../fetch/data";
+import { Get, Post, buildUrl, Delete } from "../../fetch/fetch";
+import type { ListType } from "../../fetch/data";
 
 import type Data from "./data";
 
@@ -10,16 +10,23 @@ export const GetPhotoList = (params: Data.PhotoListParams) => {
 
 /** 新建相册 */
 export const PostPhoto = (params: Data.PhotoCreateParams) => {
-  return Post<BaseResponse<Data.PhotoListItem & { id: string }>>(
+  return Post<Data.PhotoListItem & { id: string }>(buildUrl("photo"), params);
+};
+
+/** 编辑相册 */
+export const PutPhoto = (params: Data.PhotoCreateParams & { id: string }) => {
+  return Post<Data.PhotoCreateParams & { id: string }>(
     buildUrl("photo"),
     params
   );
 };
 
-/** 编辑相册 */
-export const PutPhoto = (params: Data.PhotoCreateParams & { id: string }) => {
-  return Post<BaseResponse<Data.PhotoCreateParams & { id: string }>>(
-    buildUrl("photo"),
-    params
-  );
+/** 获取单个相册 */
+export const GetPhoto = (params: { id: number | string }) => {
+  return Get<Data.PhotoDetail>(buildUrl(`photo/${params.id}`));
+};
+
+/** 删除相册 */
+export const DeletePhoto = (params: { id: number | string }) => {
+  return Delete<null>(`photo/${params.id}`);
 };

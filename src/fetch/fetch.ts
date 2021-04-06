@@ -83,6 +83,20 @@ export const PostFormdata: Data.PostFormdata = (path, data) => {
     });
 };
 
+export const Delete = <T = any>(path: string, params?: Record<string, any>) => {
+  return fetch(path, {
+    method: "DELETE",
+    body: JSON.stringify(params),
+  })
+    .then((res) => res.json())
+    .then((res: Data.BaseResponse<T>) => {
+      if (res.code === 0) {
+        return res;
+      }
+      return Promise.reject();
+    });
+};
+
 export const buildUrl = (url: string) => {
   return `/api/v1/${url}`;
 };
