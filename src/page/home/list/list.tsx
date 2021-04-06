@@ -6,6 +6,7 @@ import {
   TextField,
   ImageField,
   EditButton,
+  DeleteButton,
 } from "react-admin";
 
 const RenderList: ResourceProps["list"] = (props) => {
@@ -17,6 +18,7 @@ const RenderList: ResourceProps["list"] = (props) => {
         <TextField source="url" label="地址" />
         <ImageField source="image" label="封面" />
         <EditButton />
+        <DeleteButton />
       </Datagrid>
     </List>
   );
