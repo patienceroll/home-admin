@@ -1,7 +1,7 @@
 import { DataProvider } from "react-admin";
 import { UploadImage } from "../fetch/common/common";
 
-import HomeApi from "../page/home/service";
+import * as HomeApi from "../page/home/service";
 import * as PhotoApi from "../page/photo/service";
 
 const update: DataProvider["update"] = async (resourse, params) => {

@@ -1,6 +1,6 @@
 import { DataProvider } from "react-admin";
 
-import HomeApi from "../page/home/service";
+import * as HomeApi from "../page/home/service";
 import * as PhotoApi from "../page/photo/service";
 
 import newFile from "../helper/new-file/new-file";
