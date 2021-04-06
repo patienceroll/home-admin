@@ -21,10 +21,11 @@ const getOne: DataProvider["getOne"] = (resourse, params) => {
       });
     case "photo":
       return PhotoApi.GetPhoto({ id: params.id }).then(async (res) => {
-        const { id, content, cover, describe, date } = res.data;
+        const { id, content, cover, describe, date, title } = res.data;
         const dataPhoto = {
           id,
           date,
+          title,
           describe,
           cover: await newFile(cover),
           content: decodeURIComponent(content),

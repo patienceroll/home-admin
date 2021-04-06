@@ -1,4 +1,4 @@
-import { Get, Post, buildUrl, Delete } from "../../fetch/fetch";
+import { Get, Post, buildUrl, Delete, Put } from "../../fetch/fetch";
 import type { ListType } from "../../fetch/data";
 
 import type Data from "./data";
@@ -15,8 +15,8 @@ export const PostPhoto = (params: Data.PhotoCreateParams) => {
 
 /** 编辑相册 */
 export const PutPhoto = (params: Data.PhotoCreateParams & { id: string }) => {
-  return Post<Data.PhotoCreateParams & { id: string }>(
-    buildUrl("photo"),
+  return Put<Data.PhotoCreateParams & { id: string }>(
+    buildUrl(`photo/${params.id}`),
     params
   );
 };
