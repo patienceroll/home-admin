@@ -1,7 +1,7 @@
 import { DataProvider } from "react-admin";
 import { UploadImage } from "../fetch/common/common";
 
-import HomeApi from "../page/home/service";
+import * as  HomeApi from "../page/home/service";
 import * as PhotoApi from "../page/photo/service";
 
 const create: DataProvider["create"] = async (resourse, params) => {
@@ -16,7 +16,7 @@ const create: DataProvider["create"] = async (resourse, params) => {
         image: img.data.filePath,
       });
       return {
-        data: RsData.data,
+        data: RsData.data as any,
         validUntil: new Date(),
       };
     case "photo":
