@@ -26,7 +26,7 @@ const getList: DataProvider["getList"] = async (Resource, params) => {
       };
 
     default:
-      throw new Error("请求列表路径错误");
+      return Promise.reject("请求列表路径错误");
   }
 };
 

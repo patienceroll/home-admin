@@ -28,5 +28,5 @@ export const GetPhoto = (params: { id: number | string }) => {
 
 /** 删除相册 */
 export const DeletePhoto = (params: { id: number | string }) => {
-  return Delete<null>(`photo/${params.id}`);
+  return Delete<null>(buildUrl(`photo/${params.id}`));
 };

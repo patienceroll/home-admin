@@ -7,7 +7,6 @@ import * as PhotoApi from "../page/photo/service";
 const create: DataProvider["create"] = async (resourse, params) => {
   const { data } = params;
   const formData = new FormData();
-  console.log(data);
   switch (resourse) {
     case "home":
       formData.append("file", data.image.rawFile);
@@ -25,7 +24,7 @@ const create: DataProvider["create"] = async (resourse, params) => {
       const cover = await UploadImage(formData);
       const PhotoCreate = await PhotoApi.PostPhoto({
         ...data,
-        cover:cover.data.filePath,
+        cover: cover.data.filePath,
         content: encodeURIComponent(data.content),
       });
       return {
