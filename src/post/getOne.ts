@@ -1,13 +1,13 @@
 import { DataProvider } from "react-admin";
 
-import * as HomeApi from "../page/home/service";
-import * as PhotoApi from "../page/photo/service";
+import * as HomeApi from "../page/project/service";
+import * as PhotoApi from "../page/notes/service";
 
 import newFile from "../helper/new-file/new-file";
 
 const getOne: DataProvider["getOne"] = (resourse, params) => {
   switch (resourse) {
-    case "home":
+    case "project":
       return HomeApi.GetHomeItem(params.id).then(async (res) => {
         const { id, image, title, subTitle, url } = res.data;
         const dataHome = {
@@ -19,7 +19,7 @@ const getOne: DataProvider["getOne"] = (resourse, params) => {
         };
         return { data: dataHome } as any;
       });
-    case "photo":
+    case "notes":
       return PhotoApi.GetPhoto({ id: params.id }).then(async (res) => {
         const { id, content, cover, describe, date, title } = res.data;
         const dataPhoto = {

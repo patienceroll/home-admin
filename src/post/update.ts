@@ -1,14 +1,14 @@
 import { DataProvider } from "react-admin";
 import { UploadImage } from "../fetch/common/common";
 
-import * as HomeApi from "../page/home/service";
-import * as PhotoApi from "../page/photo/service";
+import * as HomeApi from "../page/project/service";
+import * as PhotoApi from "../page/notes/service";
 
 const update: DataProvider["update"] = async (resourse, params) => {
   const { data, id } = params;
   const formData = new FormData();
   switch (resourse) {
-    case "home":
+    case "project":
       // 如果更换过图片,数据格式如此
       if (data.image.rawFile) {
         formData.append("file", data.image.rawFile);
@@ -22,7 +22,7 @@ const update: DataProvider["update"] = async (resourse, params) => {
         image: (imgHomeRes.data.filePath as unknown) as string,
       });
       return { data: resHome.data };
-    case "photo":
+    case "notes":
       // 如果更换过图片,数据格式如此
       if (data.cover.rawFile) {
         formData.append("file", data.cover.rawFile);

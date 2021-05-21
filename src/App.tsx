@@ -11,8 +11,8 @@ import updateMany from "./post/updateMany";
 import Delete from "./post/delete";
 import deleteMany from "./post/deleteMany";
 
-import Home from "./page/home/index";
-import Photo from "./page/photo/index";
+import Home from "./page/project";
+import Photo from "./page/notes";
 
 import "./App.css";
 
@@ -33,13 +33,15 @@ const App = () => {
     <>
       <Admin dataProvider={dataProvider}>
         <Resource
-          name="home"
+          name="project"
+          options={{ label: "项目" }}
           list={Home.List}
           edit={Home.Edit}
           create={Home.Create}
         />
         <Resource
-          name="photo"
+          name="notes"
+          options={{ label: "随记" }}
           list={Photo.List}
           edit={Photo.Edit}
           create={Photo.Create}

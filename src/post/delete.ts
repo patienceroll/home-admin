@@ -1,16 +1,16 @@
 import { DataProvider } from "react-admin";
 
-import * as HomeApi from "../page/home/service";
-import * as PhotoApi from "../page/photo/service";
+import * as HomeApi from "../page/project/service";
+import * as PhotoApi from "../page/notes/service";
 
 const Delete: DataProvider["delete"] = (resourse, params) => {
   switch (resourse) {
-    case "home":
+    case "project":
       return HomeApi.DeleteHomeItem({ id: params.id }).then(() => ({
         data: params.previousData as any,
       }));
 
-    case "photo":
+    case "notes":
       return PhotoApi.DeletePhoto({ id: params.id }).then(() => ({
         data: params.previousData as any,
       }));

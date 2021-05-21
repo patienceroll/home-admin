@@ -1,13 +1,13 @@
 import { DataProvider } from "react-admin";
 
-import * as HomeApi from "../page/home/service";
-import * as PhotoApi from "../page/photo/service";
+import * as HomeApi from "../page/project/service";
+import * as PhotoApi from "../page/notes/service";
 
 /** 获取table列表 */
 const getList: DataProvider["getList"] = async (Resource, params) => {
   const { filter, sort, pagination } = params;
   switch (Resource) {
-    case "home":
+    case "project":
       const HomeRes = await HomeApi.GetHomeList({
         ...pagination,
       });
@@ -16,7 +16,7 @@ const getList: DataProvider["getList"] = async (Resource, params) => {
         total: HomeRes.data.total,
       };
 
-    case "photo":
+    case "notes":
       const PhotoRes = await PhotoApi.GetPhotoList({
         ...pagination,
       });

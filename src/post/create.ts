@@ -1,14 +1,14 @@
 import { DataProvider } from "react-admin";
 import { UploadImage } from "../fetch/common/common";
 
-import * as  HomeApi from "../page/home/service";
-import * as PhotoApi from "../page/photo/service";
+import * as HomeApi from "../page/project/service";
+import * as PhotoApi from "../page/notes/service";
 
 const create: DataProvider["create"] = async (resourse, params) => {
   const { data } = params;
   const formData = new FormData();
   switch (resourse) {
-    case "home":
+    case "project":
       formData.append("file", data.image.rawFile);
       const img = await UploadImage(formData);
       const RsData = await HomeApi.PostHomeItem({
@@ -19,7 +19,7 @@ const create: DataProvider["create"] = async (resourse, params) => {
         data: RsData.data as any,
         validUntil: new Date(),
       };
-    case "photo":
+    case "notes":
       formData.append("file", data.cover.rawFile);
       const cover = await UploadImage(formData);
       const PhotoCreate = await PhotoApi.PostPhoto({
