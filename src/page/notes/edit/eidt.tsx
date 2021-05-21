@@ -9,7 +9,7 @@ import {
   ImageInput,
 } from "react-admin";
 
-import RichInput from "../../../component/rich-text-input/rich-text-input";
+import RichInput from "../../../component/rich-text-input";
 
 import Style from "./edit.module.scss";
 

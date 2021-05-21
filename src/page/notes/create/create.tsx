@@ -9,7 +9,8 @@ import {
   ImageField,
 } from "react-admin";
 
-import RichInput from "../../../component/rich-text-input/rich-text-input";
+// import RichInput from "../../../component/rich-text-input/rich-text-input";
+import RichInput from "src/component/rich-text-input";
 
 import Style from "./create.module.scss";
 

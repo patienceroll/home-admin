@@ -1,7 +1,6 @@
 import React, {
   forwardRef,
   memo,
-  useEffect,
   useImperativeHandle,
   useRef,
   useState,
@@ -12,7 +11,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 
 import { ReactComponent as X } from "../../assets/svg/x.svg";
 
-import Style from "./upload-file.module.scss";
+import Style from "./index.module.scss";
 import { UploadImage } from "../../fetch/common/common";
 
 type UploadFileProps = {

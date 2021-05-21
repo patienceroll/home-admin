@@ -17,9 +17,9 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogAction from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 
-import UploadFile, { UploadFileRefType } from "../upload-file/upload-file";
+import UploadFile, { UploadFileRefType } from "../upload-file";
 
-import "./rich-text-input.scss";
+import "./index.scss";
 
 type RichInputRefType = {
   getQuill: () => Quill;
