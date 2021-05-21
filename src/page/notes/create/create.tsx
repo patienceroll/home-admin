@@ -7,9 +7,9 @@ import {
   DateInput,
   ImageInput,
   ImageField,
+  SaveButton,
 } from "react-admin";
 
-// import RichInput from "../../../component/rich-text-input/rich-text-input";
 import RichInput from "src/component/rich-text-input";
 
 import Style from "./create.module.scss";
@@ -17,7 +17,12 @@ import Style from "./create.module.scss";
 const CreatePhoto: ResourceProps["create"] = (props) => {
   return (
     <Create {...props} title="新建相册">
-      <SimpleForm>
+      <SimpleForm
+        submitOnEnter
+        toolbar={
+          <SaveButton label="保存" style={{ margin: "0 0 16px 16px" }} />
+        }
+      >
         <TextInput variant="outlined" source="title" required label="标题" />
         <DateInput variant="outlined" source="date" required label="日期" />
 

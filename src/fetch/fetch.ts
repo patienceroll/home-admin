@@ -18,9 +18,8 @@ export const Get: Data.Get = (path, params = {}) => {
     .then((res: Data.BaseResponse<any>) => {
       if (res.code === 0) {
         return res;
-      } else {
-        return Promise.reject();
       }
+      return Promise.reject();
     });
 };
 
