@@ -1,20 +1,20 @@
 import React from "react";
 import { Admin, Resource, DataProvider } from "react-admin";
 
-import getList from "./post/list";
-import getOne from "./post/getOne";
-import getManyReference from "./post/getManyReference";
-import getMany from "./post/getMany";
-import create from "./post/create";
-import update from "./post/update";
-import updateMany from "./post/updateMany";
-import Delete from "./post/delete";
-import deleteMany from "./post/deleteMany";
+import getList from "src/post/list";
+import getOne from "src/post/getOne";
+import getManyReference from "src/post/getManyReference";
+import getMany from "src/post/getMany";
+import create from "src/post/create";
+import update from "src/post/update";
+import updateMany from "src/post/updateMany";
+import Delete from "src/post/delete";
+import deleteMany from "src/post/deleteMany";
 
-import Home from "./page/project";
-import Photo from "./page/notes";
+import Home from "src/page/project";
+import Photo from "src/page/notes";
 
-import "./App.css";
+import "src/App.css";
 
 const App = () => {
   const dataProvider: DataProvider = {

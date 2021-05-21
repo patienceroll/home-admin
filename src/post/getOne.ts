@@ -1,9 +1,9 @@
 import { DataProvider } from "react-admin";
 
-import * as HomeApi from "../page/project/service";
-import * as PhotoApi from "../page/notes/service";
+import * as HomeApi from "src/page/project/service";
+import * as PhotoApi from "src/page/notes/service";
 
-import newFile from "../helper/new-file/new-file";
+import newFile from "src/helper/new-file/new-file";
 
 const getOne: DataProvider["getOne"] = (resourse, params) => {
   switch (resourse) {

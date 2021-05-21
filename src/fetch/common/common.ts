@@ -1,4 +1,4 @@
-import { PostFormdata, buildUrl } from "../fetch";
+import { PostFormdata, buildUrl } from "src/fetch/fetch";
 
 /** 上传图片 */
 export const UploadImage = (data: FormData) => {
@@ -7,7 +7,3 @@ export const UploadImage = (data: FormData) => {
     filePath: string | string[];
   }>(buildUrl("upload/image"), data);
 };
-
-
-
-

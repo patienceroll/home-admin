@@ -9,10 +9,10 @@ import type { CSSProperties } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Backdrop from "@material-ui/core/Backdrop";
 
-import { ReactComponent as X } from "../../assets/svg/x.svg";
+import { ReactComponent as X } from "src/assets/svg/x.svg";
 
 import Style from "./index.module.scss";
-import { UploadImage } from "../../fetch/common/common";
+import { UploadImage } from "src/fetch/common/common";
 
 type UploadFileProps = {
   className?: string;
@@ -104,7 +104,7 @@ const UploadFile = memo(
             </div>
           ))}
         </div>
-        <Backdrop open={open}>
+        <Backdrop open={open} style={{ zIndex: 1 }}>
           <CircularProgress />
         </Backdrop>
       </div>

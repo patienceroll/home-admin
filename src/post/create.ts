@@ -1,8 +1,8 @@
 import { DataProvider } from "react-admin";
-import { UploadImage } from "../fetch/common/common";
+import { UploadImage } from "src/fetch/common/common";
 
-import * as HomeApi from "../page/project/service";
-import * as PhotoApi from "../page/notes/service";
+import * as HomeApi from "src/page/project/service";
+import * as PhotoApi from "src/page/notes/service";
 
 const create: DataProvider["create"] = async (resourse, params) => {
   const { data } = params;

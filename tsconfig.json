@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -19,7 +19,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "baseUrl": "./",
+    "baseUrl": "./"
   },
   "include": [
     "src/**/*"
@@ -30,6 +30,6 @@
   "path": {
     "src/*": [
       "src/*"
-    ],
+    ]
   }
 }
