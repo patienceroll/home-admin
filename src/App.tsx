@@ -1,5 +1,6 @@
 import React from "react";
-import { Admin, Resource, DataProvider } from "react-admin";
+import { Admin, Resource } from "react-admin";
+import type { DataProvider } from "react-admin";
 
 import getList from "src/post/list";
 import getOne from "src/post/getOne";
@@ -10,7 +11,9 @@ import update from "src/post/update";
 import updateMany from "src/post/updateMany";
 import Delete from "src/post/delete";
 import deleteMany from "src/post/deleteMany";
+import Auth from "src/post/auth";
 
+import Login from "src/page/login";
 import Home from "src/page/project";
 import Photo from "src/page/notes";
 
@@ -31,7 +34,7 @@ const App = () => {
 
   return (
     <>
-      <Admin dataProvider={dataProvider}>
+      <Admin dataProvider={dataProvider} authProvider={Auth} loginPage={Login}>
         <Resource
           name="project"
           options={{ label: "项目" }}
