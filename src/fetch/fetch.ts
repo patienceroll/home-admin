@@ -1,3 +1,4 @@
+import {} from "@material-ui/core";
 import type Data from "./data";
 
 export const Get: Data.Get = (path, params = {}) => {

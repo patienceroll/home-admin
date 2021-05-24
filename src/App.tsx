@@ -14,8 +14,8 @@ import deleteMany from "src/post/deleteMany";
 import Auth from "src/post/auth";
 
 import Login from "src/page/login";
-import Home from "src/page/project";
-import Photo from "src/page/notes";
+import Project from "src/page/project";
+import Notes from "src/page/notes";
 
 import "src/App.css";
 
@@ -38,16 +38,16 @@ const App = () => {
         <Resource
           name="project"
           options={{ label: "项目" }}
-          list={Home.List}
-          edit={Home.Edit}
-          create={Home.Create}
+          list={Project.List}
+          edit={Project.Edit}
+          create={Project.Create}
         />
         <Resource
           name="notes"
           options={{ label: "随记" }}
-          list={Photo.List}
-          edit={Photo.Edit}
-          create={Photo.Create}
+          list={Notes.List}
+          edit={Notes.Edit}
+          create={Notes.Create}
         />
       </Admin>
     </>
