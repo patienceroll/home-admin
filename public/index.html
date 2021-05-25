@@ -28,7 +28,10 @@
 <body>
   <noscript>Oops...,请允许执行 JavaScript 脚本</noscript>
   <div id="root"></div>
-  <!--
+  <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.js) { %>
+    <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
+    <% } %>
+      <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 

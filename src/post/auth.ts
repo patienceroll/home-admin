@@ -8,7 +8,7 @@ const auth: AuthProvider = {
     return Promise.resolve(false);
   },
   checkAuth: (parms) => Post(buildUrl("islogin"), parms).then(),
-  checkError: (params) => Post(buildUrl("error"), params).then(),
+  checkError: () => Promise.resolve(),
   getPermissions: () => Promise.resolve(),
 };
 
