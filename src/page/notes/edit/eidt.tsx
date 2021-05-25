@@ -7,6 +7,7 @@ import {
   TextInput,
   DateInput,
   ImageInput,
+  SaveButton,
 } from "react-admin";
 
 import RichInput from "../../../component/rich-text-input";
@@ -16,7 +17,11 @@ import Style from "./edit.module.scss";
 const EditPhoto: ResourceProps["edit"] = (props) => {
   return (
     <Edit {...props} title="编辑相册">
-      <SimpleForm>
+      <SimpleForm
+        toolbar={
+          <SaveButton label="保存" style={{ margin: "0 0 16px 16px" }} />
+        }
+      >
         <TextInput variant="outlined" source="title" required label="标题" />
         <DateInput variant="outlined" source="date" required label="日期" />
 

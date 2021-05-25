@@ -6,12 +6,17 @@ import {
   ResourceProps,
   SimpleForm,
   TextInput,
+  SaveButton,
 } from "react-admin";
 
 const EditHomeItem: ResourceProps["edit"] = (props) => {
   return (
     <Edit {...props} title="编辑">
-      <SimpleForm>
+      <SimpleForm
+        toolbar={
+          <SaveButton label="保存" style={{ margin: "0 0 16px 16px" }} />
+        }
+      >
         <TextInput variant="outlined" source="title" required label="标题" />
         <TextInput variant="outlined" source="subTitle" label="子标题" />
         <TextInput variant="outlined" source="url" required label="地址" />
