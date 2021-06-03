@@ -10,6 +10,7 @@ export const Get: Data.Get = (path, params = {}) => {
   return fetch(`${path}?${query.substr(0, query.length - 1)}`, {
     headers: {
       "content-type": "application/json",
+      Authorization: localStorage.getItem("token") || "",
     },
   })
     .then((response) => {
@@ -30,6 +31,7 @@ export const Post: Data.Post = (path, params = {}) => {
     method: "POST",
     headers: {
       "content-type": "application/json",
+      Authorization: localStorage.getItem("token") || "",
     },
     body: JSON.stringify(params),
   })
@@ -51,6 +53,7 @@ export const Put: Data.Put = (path, params = {}) => {
     method: "PUT",
     headers: {
       "content-type": "application/json",
+      Authorization: localStorage.getItem("token") || "",
     },
     body: JSON.stringify(params),
   })
@@ -70,6 +73,9 @@ export const PostFormdata: Data.PostFormdata = (path, data) => {
   return fetch(path, {
     method: "POST",
     body: data,
+    headers: {
+      Authorization: localStorage.getItem("token") || "",
+    },
   })
     .then((response) => {
       return response.json();
@@ -87,6 +93,9 @@ export const Delete = <T = any>(path: string, params?: Record<string, any>) => {
   return fetch(path, {
     method: "DELETE",
     body: JSON.stringify(params),
+    headers: {
+      Authorization: localStorage.getItem("token") || "",
+    },
   })
     .then((res) => res.json())
     .then((res: Data.BaseResponse<T>) => {
