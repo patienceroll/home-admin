@@ -1,0 +1,26 @@
+.ct {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 10px 10px 5px #888888;
+
+  .login {
+    flex-shrink: 0;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+  }
+  .field {
+    margin-top: 10px;
+  }
+
+  .btn {
+    margin-top: 20px;
+    width: 100%;
+  }
+}

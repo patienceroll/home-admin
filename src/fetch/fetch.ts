@@ -1,4 +1,3 @@
-import {} from "@material-ui/core";
 import type Data from "./data";
 
 export const Get: Data.Get = (path, params = {}) => {
@@ -20,7 +19,8 @@ export const Get: Data.Get = (path, params = {}) => {
       if (res.code === 0) {
         return res;
       }
-      return Promise.reject();
+
+      return Promise.reject(res.msg);
     });
 };
 
@@ -40,7 +40,7 @@ export const Post: Data.Post = (path, params = {}) => {
       if (res.code === 0) {
         return res;
       } else {
-        return Promise.reject();
+        return Promise.reject(res.msg);
       }
     });
 };
@@ -61,7 +61,7 @@ export const Put: Data.Put = (path, params = {}) => {
       if (res.code === 0) {
         return res;
       } else {
-        return Promise.reject();
+        return Promise.reject(res.msg);
       }
     });
 };
@@ -78,7 +78,7 @@ export const PostFormdata: Data.PostFormdata = (path, data) => {
       if (res.code === 0) {
         return res;
       } else {
-        return Promise.reject();
+        return Promise.reject(res.msg);
       }
     });
 };
@@ -93,7 +93,7 @@ export const Delete = <T = any>(path: string, params?: Record<string, any>) => {
       if (res.code === 0) {
         return res;
       }
-      return Promise.reject();
+      return Promise.reject(res.msg);
     });
 };
 
