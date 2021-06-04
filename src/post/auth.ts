@@ -5,7 +5,11 @@ export const PostSign = (params: { username: string; password: string }) =>
   Post(buildUrl("sign"), params);
 
 const auth: AuthProvider = {
-  login: (params) => Post<{ token: string }>(buildUrl("login"), params),
+  login: (params) =>
+    Post<{ token: string }>(buildUrl("login"), params).then((res) => {
+      localStorage.setItem("token", res.data.token);
+      return res;
+    }),
   logout: () => {
     localStorage.setItem("token", "");
     return Promise.resolve(false);

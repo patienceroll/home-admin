@@ -21,11 +21,7 @@ const MyLoginPage: LoginComponent = ({ theme }) => {
     else {
       setUsernameText(undefined);
       setPasswordText(undefined);
-      login({ password: password.value, username: username.value }).then(
-        (res) => {
-          localStorage.setItem("token", res.data.token);
-        }
-      );
+      login({ password: password.value, username: username.value });
     }
   };
 
